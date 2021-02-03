@@ -36,11 +36,11 @@ class PacSumExtractorWithTfIdf extends PacSumExtractor {
 package tokenizer{
 
 class tokenizer<< free functions >>{
- ~convert_to_unicode()
- ~printable_text()
- ~load_vocab()
- +convert_tokens_to_ids()
- ~whitespace_tokenize()
+ convert_to_unicode()
+ printable_text()
+ load_vocab()
+ convert_tokens_to_ids()
+ whitespace_tokenize()
 }
 
 class BasicTokenizer {
@@ -111,19 +111,19 @@ class gensim_preprocess<< globals >> {
 }
 
 class gensim_preprocess<< free functions >> {
- +remove_stopwords()
- +strip_punctuation()
- +strip_tags()
- +strip_short()
- +strip_numeric()
- +strip_non_alphanum()
- +strip_multiple_whitespaces()
- +split_alphanum()
- +stem_text()
- +preprocess_string()
- +preprocess_documents()
- +read_file()
- +read_files()
+ remove_stopwords()
+ strip_punctuation()
+ strip_tags()
+ strip_short()
+ strip_numeric()
+ strip_non_alphanum()
+ strip_multiple_whitespaces()
+ split_alphanum()
+ stem_text()
+ preprocess_string()
+ preprocess_documents()
+ read_file()
+ read_files()
 }
 
 }
@@ -131,10 +131,19 @@ class gensim_preprocess<< free functions >> {
 package utils{
 
 class utils<< free functions >> implements gensim_preprocess {
- +evaluate_rouge()
- +clean_text_by_sentences()
- +join_words()
+ evaluate_rouge()
+ clean_text_by_sentences()
+ join_words()
 }
 
+}
+
+package bert_model{
+ annotation Abstracted
+}
+
+class run<< Entry Point >> implements Dataset, PacSumExtractorWithBert, PacSumExtractorWithTfIdf{
+ args
+ parser
 }
 @enduml
