@@ -1,0 +1,140 @@
+@startuml
+' Split into 2 pages
+page 2x2
+
+package extractor{
+
+class PacSumExtractor {
+ +extract_num
+ +beta 
+ +lambda1 
+ +lambda2 
+
+ +extract_summary()
+ +tune_hparams()
+ -_calculate_similarity_matrix()
+ -_select_tops()
+ -_tune_extractor()
+}
+
+class PacSumExtractorWithBert extends PacSumExtractor {
+ +model
+
+ -_calculate_similarity_matrix()
+ -_generate_score()
+ -_load_edge_model()
+}
+
+class PacSumExtractorWithTfIdf extends PacSumExtractor {
+ -_calculate_similarity_matrix()
+ -_idf_modified_dot()
+ -_calculate_idf_scores()
+}
+
+}
+
+package tokenizer{
+
+class tokenizer<< free functions >>{
+ ~convert_to_unicode()
+ ~printable_text()
+ ~load_vocab()
+ +convert_tokens_to_ids()
+ ~whitespace_tokenize()
+}
+
+class BasicTokenizer {
+ +do_lower_case 
+
+ +tokenize()
+ -_run_strip_accents()
+ -_run_split_on_punc()
+ -_tokenize_chinese_chars()
+ -_is_chinese_char()
+ -_clean_text()
+}
+
+class FullTokenizer {
+ +vocab
+ +basic_tokenizer
+ +wordpiece_tokenizer
+
+ +tokenize()
+ +convert_tokens_to_ids()
+}
+
+
+class WordpieceTokenizer {
+ +vocab
+ +unk_token
+ +max_input_chars_per_word
+
+ +tokenize()
+ -_is_whitespace()
+ -_is_control()
+ -_is_punctuation()
+}
+
+}
+
+package data_iterator{
+
+class Dataset implements FullTokenizer{
+ -_file_pattern
+ -_max_len
+ -_tokenizer
+
+ +iterate_once_doc_tfidf()
+ -_doc_stream_tfidf()
+ -_parse_file2doc_tfidf()
+ +iterate_once_doc_bert()
+ -_doc_stream_bert()
+ -_parse_file2doc_bert()
+ -_doc_iterate_bert()
+ -_2bert_rep()
+ -_truncate_seq_pair()
+}
+}
+
+package gensim_preprocess{
+
+class gensim_preprocess<< globals >> {
+ STOPWORDS
+ RE_PUNCT
+ RE_TAGS
+ RE_NUMERIC 
+ RE_NONALPHA 
+ RE_AL_NUM 
+ RE_NUM_AL 
+ RE_WHITESPACE
+ DEFAULT_FILTERS
+}
+
+class gensim_preprocess<< free functions >> {
+ +remove_stopwords()
+ +strip_punctuation()
+ +strip_tags()
+ +strip_short()
+ +strip_numeric()
+ +strip_non_alphanum()
+ +strip_multiple_whitespaces()
+ +split_alphanum()
+ +stem_text()
+ +preprocess_string()
+ +preprocess_documents()
+ +read_file()
+ +read_files()
+}
+
+}
+
+package utils{
+
+class utils<< free functions >> implements gensim_preprocess {
+ +evaluate_rouge()
+ +clean_text_by_sentences()
+ +join_words()
+}
+
+}
+@enduml
