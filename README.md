@@ -1,4 +1,4 @@
-![cached image](http:www.plantuml.com/plantuml/proxy?src=https:raw.github.com/Ayenem/PacSum/blob/master/PlantUML_Class_Diagram.txt)
+<img>http:www.plantuml.com/plantuml/proxy?src=https:raw.github.com/Ayenem/PacSum/blob/master/PlantUML_Class_Diagram.txt</img>
                 
 # PacSum
 
