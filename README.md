@@ -1,5 +1,5 @@
-![image](http://www.plantuml.com/plantuml/proxy?src=https://github.com/Ayenem/PacSum/blob/master/PlantUML_Class_Diagram.txt)
-
+![cached image](http:www.plantuml.com/plantuml/proxy?src=https:raw.github.com/Ayenem/PacSum/blob/master/PlantUML_Class_Diagram.txt)
+                
 # PacSum
 
 This code is for paper [Sentence Centrality Revisited for Unsupervised Summarization](https://arxiv.org/pdf/1906.03508.pdf) ACL 2019
