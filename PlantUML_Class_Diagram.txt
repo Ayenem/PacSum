@@ -1,6 +1,6 @@
 @startuml
 package bert_model{
-annotation Abstracted_bert_model
+ annotation Abstracted_bert_model
 }
 
 package gensim_preprocess{
@@ -15,9 +15,7 @@ class gensim_preprocess_<< globals >>{
  RE_NUM_AL 
  RE_WHITESPACE
  DEFAULT_FILTERS
-}
 
-class gensim_preprocess_<< free functions >> {
  remove_stopwords()
  strip_punctuation()
  strip_tags()
@@ -37,7 +35,7 @@ class gensim_preprocess_<< free functions >> {
 
 package utils{
 
-class utils_<< free functions >> implements gensim_preprocess_ {
+class utils_<< globals >> implements gensim_preprocess_ {
  evaluate_rouge()
  clean_text_by_sentences()
  join_words()
@@ -78,7 +76,7 @@ class PacSumExtractorWithTfIdf extends PacSumExtractor {
 
 package tokenizer{
 
-class tokenizer_<< free functions >>{
+class tokenizer_<< globals >>{
  convert_to_unicode()
  printable_text()
  load_vocab()
