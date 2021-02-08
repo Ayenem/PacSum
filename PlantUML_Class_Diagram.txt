@@ -3,47 +3,6 @@ package bert_model{
  class BertModel{}
 }
 
-package gensim_preprocess{
-
-class gensim_preprocess_<< globals >>{
- STOPWORDS
- RE_PUNCT
- RE_TAGS
- RE_NUMERIC 
- RE_NONALPHA 
- RE_AL_NUM 
- RE_NUM_AL 
- RE_WHITESPACE
- DEFAULT_FILTERS
-
- remove_stopwords()
- strip_punctuation()
- strip_tags()
- strip_short()
- strip_numeric()
- strip_non_alphanum()
- strip_multiple_whitespaces()
- split_alphanum()
- stem_text()
- preprocess_string()
- preprocess_documents()
- read_file()
- read_files()
-}
-
-}
-
-package utils{
-
-class utils_<< globals >>{
- evaluate_rouge()
- clean_text_by_sentences()
- join_words()
-}
-utils_ --> gensim_preprocess_
-
-}
-
 package extractor{
 
 class PacSumExtractor{
@@ -59,7 +18,6 @@ class PacSumExtractor{
  -_tune_extractor()
 }
 PacSumExtractor --> BertModel
-PacSumExtractor --> utils_
 
 class PacSumExtractorWithBert extends PacSumExtractor {
  +model
@@ -138,7 +96,6 @@ class Dataset{
  -_2bert_rep()
  -_truncate_seq_pair()
 }
-Dataset --> utils_
 Dataset --> FullTokenizer
 
 }
