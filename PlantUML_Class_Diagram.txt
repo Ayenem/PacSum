@@ -1,6 +1,6 @@
 @startuml
 package bert_model{
- annotation Abstracted_bert_model
+ class BertModel{}
 }
 
 package gensim_preprocess{
@@ -35,17 +35,18 @@ class gensim_preprocess_<< globals >>{
 
 package utils{
 
-class utils_<< globals >> implements gensim_preprocess_ {
+class utils_<< globals >>{
  evaluate_rouge()
  clean_text_by_sentences()
  join_words()
 }
+utils_ --> gensim_preprocess_
 
 }
 
 package extractor{
 
-class PacSumExtractor implements Abstracted_bert_model, utils_{
+class PacSumExtractor{
  +extract_num
  +beta 
  +lambda1 
@@ -57,6 +58,8 @@ class PacSumExtractor implements Abstracted_bert_model, utils_{
  -_select_tops()
  -_tune_extractor()
 }
+PacSumExtractor --> BertModel
+PacSumExtractor --> utils_
 
 class PacSumExtractorWithBert extends PacSumExtractor {
  +model
@@ -120,7 +123,7 @@ class WordpieceTokenizer {
 
 package data_iterator{
 
-class Dataset implements utils_, FullTokenizer{
+class Dataset{
  -_file_pattern
  -_max_len
  -_tokenizer
@@ -135,10 +138,16 @@ class Dataset implements utils_, FullTokenizer{
  -_2bert_rep()
  -_truncate_seq_pair()
 }
+Dataset --> utils_
+Dataset --> FullTokenizer
+
 }
 
-class run<< Entry Point >> implements Dataset, PacSumExtractorWithBert, PacSumExtractorWithTfIdf{
+class run<< Entry Point >>{
  args
  parser
 }
+run --> Dataset
+run --> PacSumExtractorWithBert
+run --> PacSumExtractorWithTfIdf
 @enduml
