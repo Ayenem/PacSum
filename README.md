@@ -1,6 +1,6 @@
 ## UML Class Diagram 
 
-![uncached image](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/Ayenem/PacSum/master/PlantUML_Class_Diagram.txt)
+![uncached image](http://www.plantuml.com/plantuml/proxy?cache=yes&src=https://raw.githubusercontent.com/Ayenem/PacSum/master/PlantUML_Class_Diagram.txt)
                 
 # PacSum
 
