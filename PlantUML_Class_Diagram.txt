@@ -37,7 +37,7 @@ class PacSumExtractorWithTfIdf extends PacSumExtractor {
 
 package tokenizer{
 
-class tokenizer_<< globals >>{
+class tokenizer_globals_ << (G,orchid) >>{
  convert_to_unicode()
  printable_text()
  load_vocab()
@@ -46,7 +46,6 @@ class tokenizer_<< globals >>{
  _is_whitespace()
  _is_control()
  _is_punctuation()
-
 }
 
 class BasicTokenizer {
