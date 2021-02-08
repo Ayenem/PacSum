@@ -43,6 +43,10 @@ class tokenizer_<< globals >>{
  load_vocab()
  convert_tokens_to_ids()
  whitespace_tokenize()
+ _is_whitespace()
+ _is_control()
+ _is_punctuation()
+
 }
 
 class BasicTokenizer {
@@ -72,9 +76,6 @@ class WordpieceTokenizer {
  +max_input_chars_per_word
 
  +tokenize()
- -_is_whitespace()
- -_is_control()
- -_is_punctuation()
 }
 
 }
@@ -96,7 +97,7 @@ class Dataset{
  -_2bert_rep()
  -_truncate_seq_pair()
 }
-Dataset --> FullTokenizer
+Dataset o-- FullTokenizer
 
 }
 
